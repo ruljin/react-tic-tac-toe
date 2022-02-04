@@ -12,6 +12,8 @@
 This project is a tic-tac-toe game. The game is always started by the player playing X. The next move is passed to the next player (O) and so on, until the end of the game.
 On the right, information about which player is currently taking the move or who has won the game is displayed. Below the game status, there is an interactive story that allows you to start the game over or go back to a specific point in time. The game is played by marking the appropriate squares on the board. This is a browser based web application, so no installation is required.
 
+<img src="https://res.cloudinary.com/dox1tzpb0/image/upload/v1643992192/tic-tac-toe_bcs6da.jpg">
+
 ## Features
 
 - the main page contains the tic-tac-toe game,
