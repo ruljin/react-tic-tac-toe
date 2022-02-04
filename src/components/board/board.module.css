@@ -1,0 +1,5 @@
+.board__row:after {
+	clear: both;
+	content: '';
+	display: table;
+}
