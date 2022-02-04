@@ -23,9 +23,7 @@ export const Game = () => {
 	});
 
 	let status = '';
-	status = winner
-		? 'Wygrywa: ' + winner
-		: 'Następny gracz: ' + (xIsNext ? 'X' : 'O');
+	status = winner ? 'Wins: ' + winner : 'Next player: ' + (xIsNext ? 'X' : 'O');
 
 	const handleClick = (squareNumber) => {
 		const oldHistory = history.slice(0, stepNumber + 1);
