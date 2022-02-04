@@ -9,6 +9,9 @@
 
 ## General info
 
+This project is a tic-tac-toe game. The game is always started by the player playing X. The next move is passed to the next player (O) and so on, until the end of the game.
+On the right, information about which player is currently taking the move or who has won the game is displayed. Below the game status, there is an interactive story that allows you to start the game over or go back to a specific point in time. The game is played by marking the appropriate squares on the board. This is a browser based web application, so no installation is required.
+
 ## Features
 
 - the main page contains the tic-tac-toe game,
@@ -29,7 +32,7 @@ If you want to run the application on the local machine, follow these steps:
 
 1. Clone down this repository
 2. Install dependencies with the command: `yarn install`
-3. Start development server `yarn start`
+3. Start development server with the command: `yarn start`
 
 The application will be available at `localhost:3000` to view in the browser.
 The page will reload if you make edits.\
