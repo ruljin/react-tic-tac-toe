@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Board } from './components/Board';
+import { Board } from './components/board/Board';
+import { Status } from './components/status/Status';
+import { Moves } from './components/moves/Moves';
 import { calculateWinner } from './utils';
 import './index.css';
 
@@ -58,7 +60,7 @@ class Game extends React.Component {
 			);
 		});
 
-		let status;
+		let status = '';
 		if (winner) {
 			status = 'Wygrywa: ' + winner;
 		} else {
@@ -74,8 +76,8 @@ class Game extends React.Component {
 					/>
 				</div>
 				<div className='game-info'>
-					<div>{status}</div>
-					<ol>{moves}</ol>
+					<Status status={status} />
+					<Moves moves={moves} />
 				</div>
 			</div>
 		);
