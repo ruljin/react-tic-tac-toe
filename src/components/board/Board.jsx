@@ -1,5 +1,5 @@
-import { Square } from '../square/Square';
-import styles from './board.module.css';
+import { Square } from "../square/Square";
+import styles from "./board.module.scss";
 
 export const Board = ({ squares, onClick }) => (
 	<div>
