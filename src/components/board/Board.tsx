@@ -1,7 +1,12 @@
 import { Square } from "../square/Square";
 import styles from "./board.module.scss";
 
-export const Board = ({ squares, onClick }) => (
+type BoardProps = {
+	squares: number[];
+	onClick: (number: number) => void;
+};
+
+export const Board = ({ squares, onClick }: BoardProps) => (
 	<div>
 		<div className={styles.board__row}>
 			<Square value={squares[0]} onClick={() => onClick(0)} />

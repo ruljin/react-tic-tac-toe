@@ -25,7 +25,7 @@ export const Game = () => {
 	let status = "";
 	status = winner ? "Wins: " + winner : "Next player: " + (xIsNext ? "X" : "O");
 
-	const handleClick = (squareNumber) => {
+	const handleClick = (squareNumber: number) => {
 		const oldHistory = history.slice(0, stepNumber + 1);
 		const currentHistory = oldHistory[oldHistory.length - 1];
 		const squares = currentHistory.squares.slice();
@@ -40,7 +40,7 @@ export const Game = () => {
 		setXIsNext(!xIsNext);
 	};
 
-	const jumpTo = (step) => {
+	const jumpTo = (step: number) => {
 		setStepNumber(step);
 		setXIsNext(step % 2 === 0);
 	};
