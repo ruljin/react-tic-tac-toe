@@ -1,10 +1,10 @@
-import { useState } from 'react';
-import ReactDOM from 'react-dom';
-import { Board } from './components/board/Board';
-import { Status } from './components/status/Status';
-import { Moves } from './components/moves/Moves';
-import { calculateWinner } from './utils';
-import './index.css';
+import { useState } from "react";
+import ReactDOM from "react-dom";
+import { Board } from "./components/board/Board";
+import { Status } from "./components/status/Status";
+import { Moves } from "./components/moves/Moves";
+import { calculateWinner } from "./utils";
+import "./index.scss";
 
 export const Game = () => {
 	const [history, setHistory] = useState([{ squares: Array(9).fill(null) }]);
@@ -14,7 +14,7 @@ export const Game = () => {
 	const winner = calculateWinner(current.squares);
 
 	const moves = history.map((_, move) => {
-		const desc = move ? 'Go to move #' + move : 'Go to the game start';
+		const desc = move ? "Go to move #" + move : "Go to the game start";
 		return (
 			<li key={move}>
 				<button onClick={() => jumpTo(move)}>{desc}</button>
@@ -22,8 +22,8 @@ export const Game = () => {
 		);
 	});
 
-	let status = '';
-	status = winner ? 'Wins: ' + winner : 'Next player: ' + (xIsNext ? 'X' : 'O');
+	let status = "";
+	status = winner ? "Wins: " + winner : "Next player: " + (xIsNext ? "X" : "O");
 
 	const handleClick = (squareNumber) => {
 		const oldHistory = history.slice(0, stepNumber + 1);
@@ -34,7 +34,7 @@ export const Game = () => {
 			return;
 		}
 
-		squares[squareNumber] = xIsNext ? 'X' : 'O';
+		squares[squareNumber] = xIsNext ? "X" : "O";
 		setHistory(oldHistory.concat([{ squares }]));
 		setStepNumber(oldHistory.length);
 		setXIsNext(!xIsNext);
@@ -46,11 +46,11 @@ export const Game = () => {
 	};
 
 	return (
-		<div className='game'>
-			<div className='game-board'>
+		<div className="game">
+			<div className="game-board">
 				<Board squares={current.squares} onClick={(i) => handleClick(i)} />
 			</div>
-			<div className='game-info'>
+			<div className="game-info">
 				<Status status={status} />
 				<Moves moves={moves} />
 			</div>
@@ -58,4 +58,4 @@ export const Game = () => {
 	);
 };
 
-ReactDOM.render(<Game />, document.getElementById('root'));
+ReactDOM.render(<Game />, document.getElementById("root"));
