@@ -23,10 +23,12 @@ On the right, information about which player is currently taking the move or who
 
 ## Technologies
 
+Application has been moved from CSS/JS to SCSS/TS on 20.05.2022.
+
 - HTML,
-- CSS,
-- JS,
-- React.js.
+- SCSS,
+- TS,
+- React.
 
 ## Setup
 
