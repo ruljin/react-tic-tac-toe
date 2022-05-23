@@ -7,20 +7,36 @@ import { calculateWinner } from "./utils";
 import "./index.scss";
 
 export const Game = () => {
+	const { history, current, status, handleClick, handleGoToMove } = useGame();
+
+	const moves = history.map((_, move: number) => {
+		const desc = move ? "Go to move #" + move : "Go to the game start";
+		return (
+			<li key={move}>
+				<button onClick={() => handleGoToMove(move)}>{desc}</button>
+			</li>
+		);
+	});
+
+	return (
+		<div className="game">
+			<div className="game__board">
+				<Board squares={current.squares} onClick={(i) => handleClick(i)} />
+			</div>
+			<div className="game__info">
+				<Status status={status} />
+				<Moves moves={moves} />
+			</div>
+		</div>
+	);
+};
+
+const useGame = () => {
 	const [history, setHistory] = useState([{ squares: Array(9).fill(null) }]);
 	const [stepNumber, setStepNumber] = useState(0);
 	const [xIsNext, setXIsNext] = useState(true);
 	const current = history[stepNumber];
 	const winner = calculateWinner(current.squares);
-
-	const moves = history.map((_, move) => {
-		const desc = move ? "Go to move #" + move : "Go to the game start";
-		return (
-			<li key={move}>
-				<button onClick={() => jumpTo(move)}>{desc}</button>
-			</li>
-		);
-	});
 
 	let status = "";
 	status = winner ? "Wins: " + winner : "Next player: " + (xIsNext ? "X" : "O");
@@ -40,22 +56,12 @@ export const Game = () => {
 		setXIsNext(!xIsNext);
 	};
 
-	const jumpTo = (step: number) => {
+	const handleGoToMove = (step: number) => {
 		setStepNumber(step);
 		setXIsNext(step % 2 === 0);
 	};
 
-	return (
-		<div className="game">
-			<div className="game-board">
-				<Board squares={current.squares} onClick={(i) => handleClick(i)} />
-			</div>
-			<div className="game-info">
-				<Status status={status} />
-				<Moves moves={moves} />
-			</div>
-		</div>
-	);
+	return { history, current, status, handleClick, handleGoToMove } as const;
 };
 
 ReactDOM.render(<Game />, document.getElementById("root"));
